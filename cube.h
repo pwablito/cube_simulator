@@ -1,8 +1,9 @@
-#include "colors.h"
+typedef enum {
+    WHITE, YELLOW, RED, ORANGE, BLUE, GREEN
+} color;
 
 class Cube {
 private:
-
     // Begin corners
     struct ufr {
         color u;

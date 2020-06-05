@@ -1,11 +1,74 @@
+#include <iostream>
 #include "cube.h"
 
-void Cube::print() {
+using namespace std;
 
+string color_char(color clr) {
+    string color_code = "";
+    switch (clr) {
+        case BLUE:
+            color_code = "\e[38;2;0;0;255m";
+            break;
+        case RED:
+            color_code = "\e[38;2;255;0;0m";
+            break;
+        case ORANGE:
+            color_code = "\e[38;2;255;165;0m";
+            break;
+        case GREEN:
+            color_code = "\e[38;2;0;255;0m";
+            break;
+        case WHITE:
+            color_code = "\e[38;2;255;255;255m";
+            break;
+        case YELLOW:
+            color_code = "\e[38;2;255;255;0m";
+            break;
+    }
+    return color_code + "\u25A0" + "\e[0m";
+}
+
+void Cube::print() {
+    cout << "      " << color_char(this->dbl.b) << " " << color_char(db.b) << " " << color_char(dbr.b) << endl;
+    cout << "      " << color_char(this->bl.b) << " " << color_char(b) << " " << color_char(br.b) << endl;
+    cout << "      " << color_char(this->ubl.b) << " " << color_char(ub.b) << " " << color_char(ubr.b) << endl;
+    cout << color_char(this->dbl.l) << " " << color_char(this->bl.l) << " " << color_char(this->ubl.l) << " "
+         << color_char(this->ubl.u) << " " << color_char(this->ub.u) << " " << color_char(this->ubr.u) << " "
+         << color_char(this->ubr.r) << " " << color_char(this->br.r) << " " << color_char(this->dbr.r) << endl;
+    cout << color_char(this->dl.l)  << " " << color_char(this->l)    << " " << color_char(this->ul.l)  << " "
+         << color_char(this->ul.u)  << " " << color_char(this->u)    << " " << color_char(this->ur.u)  << " "
+         << color_char(this->ur.r)  << " " << color_char(this->r)    << " " << color_char(this->dr.r) << endl;
+    cout << color_char(this->dfl.l) << " " << color_char(this->fl.l) << " " << color_char(this->ufl.l) << " "
+         << color_char(this->ufl.u) << " " << color_char(this->uf.u) << " " << color_char(this->ufr.u) << " "
+         << color_char(this->ufr.r) << " " << color_char(this->fr.r) << " " << color_char(this->dfr.r) << endl;
+    cout << "      " << color_char(this->ufl.f) << " " << color_char(this->uf.f) << " " << color_char(this->ufr.f) << endl;
+    cout << "      " << color_char(this->fl.f)  << " " << color_char(this->f)    << " " << color_char(this->fr.f)  << endl;
+    cout << "      " << color_char(this->dfl.f) << " " << color_char(this->df.f) << " " << color_char(this->dfr.f) << endl;
+    cout << "      " << color_char(this->dfl.d) << " " << color_char(this->df.d) << " " << color_char(this->dfr.d) << endl;
+    cout << "      " << color_char(this->dl.d)  << " " << color_char(this->d)    << " " << color_char(this->dr.d)  << endl;
+    cout << "      " << color_char(this->dbl.d) << " " << color_char(this->db.d) << " " << color_char(this->dbr.d) << endl;
 }
 
 void Cube::turn_r() {
+    color tmp_ubr_b = ubr.b;
+    color tmp_br_b = br.b;
+    color tmp_dbr_b = dbr.b;
 
+    dbr.b = ubr.u;
+    br.b = ur.u;
+    ubr.b = ufr.u;
+
+    ubr.u = ufr.f;
+    ur.u = fr.f;
+    ufr.u = dfr.f;
+
+    ufr.f = dfr.d;
+    fr.f = dr.d;
+    dfr.f = dbr.d;
+
+    dfr.d = tmp_dbr_b;
+    dr.d = tmp_br_b;
+    dbr.d = tmp_ubr_b;
 }
 
 void Cube::turn_r_prime() {
@@ -100,7 +163,7 @@ void Cube::reset() {
     this->br.r = this->r;
 
     this->bl.b = this->b;
-    this->bl.l = this->b;
+    this->bl.l = this->l;
 
     this->df.d = this->d;
     this->df.f = this->f;
