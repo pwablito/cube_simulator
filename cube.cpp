@@ -81,13 +81,36 @@ void Cube::reset() {
     this->uf.u = this->u;
     this->uf.f = this->f;
 
-    this->uf.u = this->u;
-    this->uf.f = this->f;
+    this->ub.u = this->u;
+    this->ub.b = this->b;
 
-    this->uf.u = this->u;
-    this->uf.f = this->f;
+    this->ur.u = this->u;
+    this->ur.r = this->r;
 
-    this->uf.u = this->u;
-    this->uf.f = this->f;
-    //TODO Add the rest of these
+    this->ul.u = this->u;
+    this->ul.l = this->l;
+
+    this->fr.f = this->f;
+    this->fr.r = this->r;
+
+    this->fl.f = this->f;
+    this->fl.l = this->l;
+
+    this->br.b = this->b;
+    this->br.r = this->r;
+
+    this->bl.b = this->b;
+    this->bl.l = this->b;
+
+    this->df.d = this->d;
+    this->df.f = this->f;
+
+    this->db.d = this->d;
+    this->db.b = this->b;
+
+    this->dr.d = this->d;
+    this->dr.r = this->r;
+
+    this->dl.d = this->d;
+    this->dl.l = this->l;
 }
