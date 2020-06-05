@@ -89,4 +89,5 @@ void Cube::reset() {
 
     this->uf.u = this->u;
     this->uf.f = this->f;
+    //TODO Add the rest of these
 }
