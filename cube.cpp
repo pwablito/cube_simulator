@@ -69,18 +69,85 @@ void Cube::turn_r() {
     dfr.d = tmp_dbr_b;
     dr.d = tmp_br_b;
     dbr.d = tmp_ubr_b;
+
+    color tmp_ufr_r = ufr.r;
+    ufr.r = dfr.r;
+    dfr.r = dbr.r;
+    dbr.r = ubr.r;
+    ubr.r = tmp_ufr_r;
+
+    color tmp_fr_r = fr.r;
+    fr.r = dr.r;
+    dr.r = br.r;
+    br.r = ur.r;
+    ur.r = tmp_fr_r;
 }
 
 void Cube::turn_r_prime() {
+    color tmp_dfr_d = dfr.d;
+    color tmp_dr_d = dr.d;
+    color tmp_dbr_d = dbr.d;
 
+    dfr.d = ufr.f;
+    dr.d = fr.f;
+    dbr.d = dfr.f;
+
+    ufr.f = ubr.u;
+    fr.f = ur.u;
+    dfr.f = ufr.u;    
+
+    ubr.u = dbr.b;
+    ur.u = br.b;
+    ufr.u = ubr.b;
+
+    dbr.b = tmp_dfr_d;
+    br.b = tmp_dr_d;
+    ubr.b = tmp_dbr_d;
 }
 
 void Cube::turn_l() {
 
+    color tmp_dfl_d = dfl.d;
+    color tmp_dl_d = dl.d;
+    color tmp_dbl_d = dbl.d;
+
+    dfl.d = ufl.f;
+    dl.d = fl.f;
+    dbl.d = dfl.f;
+
+    ufl.f = ubl.u;
+    fl.f = ul.u;
+    dfl.f = ufl.u;    
+
+    ubl.u = dbl.b;
+    ul.u = bl.b;
+    ufl.u = ubl.b;
+
+    dbl.b = tmp_dfl_d;
+    bl.b = tmp_dl_d;
+    ubl.b = tmp_dbl_d;
 }
 
 void Cube::turn_l_prime() {
+    color tmp_ubl_b = ubl.b;
+    color tmp_bl_b = bl.b;
+    color tmp_dbl_b = dbl.b;
 
+    dbl.b = ubl.u;
+    bl.b = ul.u;
+    ubl.b = ufl.u;
+
+    ubl.u = ufl.f;
+    ul.u = fl.f;
+    ufl.u = dfl.f;
+
+    ufl.f = dfl.d;
+    fl.f = dl.d;
+    dfl.f = dbl.d;
+
+    dfl.d = tmp_dbl_b;
+    dl.d = tmp_bl_b;
+    dbl.d = tmp_ubl_b;
 }
 
 void Cube::turn_f() {
