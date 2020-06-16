@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <stack>
 #include "cube.h"
 
 using namespace std;
@@ -50,6 +52,8 @@ void Cube::print() {
 }
 
 void Cube::turn_r() {
+    move_stack.push(R);
+
     COLOR tmp_ubr_b = ubr.b;
     COLOR tmp_br_b = br.b;
     COLOR tmp_dbr_b = dbr.b;
@@ -83,6 +87,7 @@ void Cube::turn_r() {
 }
 
 void Cube::turn_r_prime() {
+    move_stack.push(R_PRIME);
     COLOR tmp_dfr_d = dfr.d;
     COLOR tmp_dr_d = dr.d;
     COLOR tmp_dbr_d = dbr.d;
@@ -116,6 +121,7 @@ void Cube::turn_r_prime() {
 }
 
 void Cube::turn_l() {
+    move_stack.push(L);
 
     COLOR tmp_dfl_d = dfl.d;
     COLOR tmp_dl_d = dl.d;
@@ -150,6 +156,7 @@ void Cube::turn_l() {
 }
 
 void Cube::turn_l_prime() {
+    move_stack.push(L_PRIME);
     COLOR tmp_ubl_b = ubl.b;
     COLOR tmp_bl_b = bl.b;
     COLOR tmp_dbl_b = dbl.b;
@@ -183,6 +190,7 @@ void Cube::turn_l_prime() {
 }
 
 void Cube::turn_f() {
+    move_stack.push(F);
     COLOR tmp_ufr_u = ufr.u;
     COLOR tmp_uf_u = uf.u;
     COLOR tmp_ufl_u = ufl.u;
@@ -217,6 +225,7 @@ void Cube::turn_f() {
 }
 
 void Cube::turn_f_prime() {
+    move_stack.push(F_PRIME);
     COLOR tmp_ufr_u = ufr.u;
     COLOR tmp_uf_u = uf.u;
     COLOR tmp_ufl_u = ufl.u;
@@ -251,6 +260,7 @@ void Cube::turn_f_prime() {
 }
 
 void Cube::turn_b() {
+    move_stack.push(B);
     COLOR tmp_ubr_u = ubr.u;
     COLOR tmp_ub_u = ub.u;
     COLOR tmp_ubl_u = ubl.u;
@@ -285,6 +295,7 @@ void Cube::turn_b() {
 }
 
 void Cube::turn_b_prime() {
+    move_stack.push(B_PRIME);
     COLOR tmp_ubr_u = ubr.u;
     COLOR tmp_ub_u = ub.u;
     COLOR tmp_ubl_u = ubl.u;
@@ -319,19 +330,143 @@ void Cube::turn_b_prime() {
 }
 
 void Cube::turn_u() {
+    move_stack.push(U);
+    COLOR tmp_ubl_b = ubl.b;
+    COLOR tmp_ub_b = ub.b;
+    COLOR tmp_ubr_b = ubr.b;
 
+    ubl.b = ufl.l;
+    ub.b = ul.l;
+    ubr.b = ubl.l;
+
+    ufl.l = ufr.f;
+    ul.l = uf.f;
+    ubl.l = ufl.f;
+
+    ufr.f = ubr.r;
+    uf.f = ur.r;
+    ufl.f = ufr.r;
+
+    ubr.r = tmp_ubl_b;
+    ur.r = tmp_ub_b;
+    ufr.r = tmp_ubr_b;
+
+    COLOR tmp_ubl_u = ubl.u;
+    COLOR tmp_ul_u = ul.u;
+
+    ubl.u = ufl.u;
+    ul.u = uf.u;
+    ufl.u = ufr.u;
+    uf.u = ur.u;
+    ufr.u = ubr.u;
+    ur.u = ub.u;
+    ubr.u = tmp_ubl_u;
+    ub.u = tmp_ul_u;
 }
 
 void Cube::turn_u_prime() {
+    move_stack.push(U_PRIME);
+    COLOR tmp_ubl_b = ubl.b;
+    COLOR tmp_ub_b = ub.b;
+    COLOR tmp_ubr_b = ubr.b;
 
+    ubl.b = ubr.r;
+    ub.b = ur.r;
+    ubr.b = ufr.r;
+
+    ubr.r = ufr.f;
+    ur.r = uf.f;
+    ufr.r = ufl.f;
+
+    ufr.f = ufl.l;
+    uf.f = ul.l;
+    ufl.f = ubl.l;
+
+    ufl.l = tmp_ubl_b;
+    ul.l = tmp_ub_b;
+    ubl.l = tmp_ubr_b; 
+
+    COLOR tmp_ubl_u = ubl.u;
+    COLOR tmp_ub_u = ub.u;
+
+    ubl.u = ubr.u;
+    ub.u = ur.u;
+    ubr.u = ufr.u;
+    ur.u = uf.u;
+    ufr.u = ufl.u;
+    uf.u = ul.u;
+    ufl.u = tmp_ubl_u;
+    ul.u = tmp_ub_u;
 }
 
 void Cube::turn_d() {
+    move_stack.push(D);
+    COLOR tmp_dbl_b = dbl.b;
+    COLOR tmp_db_b = db.b;
+    COLOR tmp_dbr_b = dbr.b;
 
+    dbl.b = dbr.r;
+    db.b = dr.r;
+    dbr.b = dfr.r;
+
+    dbr.r = dfr.f;
+    dr.r = df.f;
+    dfr.r = dfl.f;
+
+    dfr.f = dfl.l;
+    df.f = dl.l;
+    dfl.f = dbl.l;
+
+    dfl.l = tmp_dbl_b;
+    dl.l = tmp_db_b;
+    dbl.l = tmp_dbr_b; 
+
+    COLOR tmp_dbl_d = dbl.d;
+    COLOR tmp_db_d = db.d;
+
+    dbl.d = dbr.d;
+    db.d = dr.d;
+    dbr.d = dfr.d;
+    dr.d = df.d;
+    dfr.d = dfl.d;
+    df.d = dl.d;
+    dfl.d = tmp_dbl_d;
+    dl.d = tmp_db_d;
 }
 
 void Cube::turn_d_prime() {
+    move_stack.push(D_PRIME);
+    COLOR tmp_dbl_b = dbl.b;
+    COLOR tmp_db_b = db.b;
+    COLOR tmp_dbr_b = dbr.b;
 
+    dbl.b = dfl.l;
+    db.b = dl.l;
+    dbr.b = dbl.l;
+
+    dfl.l = dfr.f;
+    dl.l = df.f;
+    dbl.l = dfl.f;
+
+    dfr.f = dbr.r;
+    df.f = dr.r;
+    dfl.f = dfr.r;
+
+    dbr.r = tmp_dbl_b;
+    dr.r = tmp_db_b;
+    dfr.r = tmp_dbr_b;
+
+    COLOR tmp_dbl_d = dbl.d;
+    COLOR tmp_dl_d = dl.d;
+
+    dbl.d = dfl.d;
+    dl.d = df.d;
+    dfl.d = dfr.d;
+    df.d = dr.d;
+    dfr.d = dbr.d;
+    dr.d = db.d;
+    dbr.d = tmp_dbl_d;
+    db.d = tmp_dl_d;
 }
 
 void Cube::reset() {
@@ -403,4 +538,146 @@ void Cube::reset() {
 
     this->dl.d = this->d;
     this->dl.l = this->l;
+}
+
+vector<MOVE> Cube::solve() {
+    vector<MOVE> moves = vector<MOVE>();
+    while (!move_stack.empty()) {
+        MOVE current = move_stack.top();
+        move_stack.pop();
+        moves.push_back(invert_move(current));
+    }
+    for (unsigned int i = 0; i < moves.size(); i++) {
+        execute_move(moves[i]);
+    }
+    cout << "Solution: ";
+    for (unsigned int move_idx = 0; move_idx < moves.size(); move_idx++) {
+        cout << " " << move_to_string(moves[move_idx]);
+    }
+    cout << endl << endl;
+    move_stack.empty();
+    return moves;
+}
+
+MOVE Cube::invert_move(MOVE move) {
+    switch(move) {
+        case R:
+            return R_PRIME;
+        case R_PRIME:
+            return R;
+        case L:
+            return L_PRIME;
+        case L_PRIME:
+            return L;
+        case F:
+            return F_PRIME;
+        case F_PRIME:
+            return F;
+        case B:
+            return B_PRIME;
+        case B_PRIME:
+            return B;
+        case U:
+            return U_PRIME;
+        case U_PRIME:
+            return U;
+        case D:
+            return D_PRIME;
+        case D_PRIME:
+            return D;
+        case RESET:
+            return RESET;
+        case SOLVE:
+            return RESET;
+        case EXIT:
+            return EXIT;
+    }
+    return RESET;
+}
+
+void Cube::execute_move(MOVE move) {
+    switch(move) {
+        case R:
+            turn_r();
+            break;
+        case R_PRIME:
+            turn_r_prime();
+            break;
+        case L:
+            turn_l();
+            break;
+        case L_PRIME:
+            turn_l_prime();
+            break;
+        case F:
+            turn_f();
+            break;
+        case F_PRIME:
+            turn_f_prime();
+            break;
+        case B:
+            turn_b();
+            break;
+        case B_PRIME:
+            turn_b_prime();
+            break;
+        case U:
+            turn_u();
+            break;
+        case U_PRIME:
+            turn_u_prime();
+            break;
+        case D:
+            turn_d();
+            break;
+        case D_PRIME:
+            turn_d_prime();
+            break;
+        case RESET:
+            reset();
+            break;
+        case SOLVE:
+            solve();
+            break;
+        case EXIT:
+            exit(0);
+            break;
+    }
+}
+
+string Cube::move_to_string(MOVE move){
+    string str;
+    switch(move){
+        case R:
+            return "r";
+        case R_PRIME:
+            return "r'";
+        case L:
+            return "l";
+        case L_PRIME:
+            return "l'";
+        case F:
+            return "f";
+        case F_PRIME:
+            return "f'";
+        case B:
+            return "b";
+        case B_PRIME:
+            return "b'";
+        case U:
+            return "u";
+        case U_PRIME:
+            return "u'";
+        case D:
+            return "d";
+        case D_PRIME:
+            return "d'";
+        case SOLVE:
+            return "solve";
+        case RESET:
+            return "reset";
+        case EXIT:
+            return "exit";
+    }
+    return "unknown";
 }

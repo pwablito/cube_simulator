@@ -1,9 +1,22 @@
+#include <stack>
+#include <vector>
+
+using namespace std;
+
 enum COLOR{
     WHITE, YELLOW, RED, ORANGE, BLUE, GREEN
 };
 
+enum MOVE {
+    R, R_PRIME, L, L_PRIME,
+    F, F_PRIME, B, B_PRIME,
+    U, U_PRIME, D, D_PRIME,
+    RESET, SOLVE, EXIT,
+};
+
 class Cube {
 private:
+    stack<MOVE> move_stack = stack<MOVE>();
     // Begin corners
     struct ufr {
         COLOR u;
@@ -148,17 +161,6 @@ private:
     COLOR r;
     COLOR l;
 
-public:
-    Cube() {
-        this->u = WHITE;
-        this->d = YELLOW;
-        this->f = RED;
-        this->b = ORANGE;
-        this->r = BLUE;
-        this->l = GREEN;
-        this->reset();
-    }
-    void print();
     void turn_r();
     void turn_r_prime();
     void turn_l();
@@ -172,4 +174,19 @@ public:
     void turn_u();
     void turn_u_prime();
     void reset();
+    string move_to_string(MOVE move);
+public:
+    Cube() {
+        this->u = WHITE;
+        this->d = YELLOW;
+        this->f = RED;
+        this->b = ORANGE;
+        this->r = BLUE;
+        this->l = GREEN;
+        this->reset();
+    }
+    void print();
+    vector<MOVE> solve();
+    MOVE invert_move(MOVE move);
+    void execute_move(MOVE move);
 };

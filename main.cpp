@@ -1,21 +1,67 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 #include "cube.h"
 
 using namespace std;
 
-enum MOVE {
-    R, R_PRIME, L, L_PRIME,
-    F, F_PRIME, B, B_PRIME,
-    U, U_PRIME, D, D_PRIME,
-    RESET, SOLVE, EXIT,
-};
-
 vector<MOVE> get_moves() {
-    cout << "cube #> ";
+    cout << "(cube) > ";
     string input;
     getline(cin, input);
-    return vector<MOVE>();
+    vector<MOVE> moves = vector<MOVE>();
+    if (input == "reset") {
+        moves.push_back(RESET);
+        return moves;
+    }
+    if (input == "exit") {
+        moves.push_back(EXIT);
+        return moves;
+    }
+    if (input == "solve") {
+        moves.push_back(SOLVE);
+        return moves;
+    }
+    for (unsigned int i = 0; i < input.length(); i++) {
+        switch (input[i]) {
+            case 'r':
+                moves.push_back(R);
+                break;
+            case 'R':
+                moves.push_back(R_PRIME);
+                break;
+            case 'l':
+                moves.push_back(L);
+                break;
+            case 'L':
+                moves.push_back(L_PRIME);
+                break;
+            case 'f':
+                moves.push_back(F);
+                break;
+            case 'F':
+                moves.push_back(F_PRIME);
+                break;
+            case 'b':
+                moves.push_back(B);
+                break;
+            case 'B':
+                moves.push_back(B_PRIME);
+                break;
+            case 'u':
+                moves.push_back(U);
+                break;
+            case 'U':
+                moves.push_back(U_PRIME);
+                break;
+            case 'd':
+                moves.push_back(D);
+                break;
+            case 'D':
+                moves.push_back(D_PRIME);
+        }
+    }
+    return moves;
 }
 
 int main(int argc, char** argv) {
@@ -24,53 +70,7 @@ int main(int argc, char** argv) {
         cube.print();
         vector<MOVE> moves = get_moves();
         for (unsigned int i = 0; i < moves.size(); i++) {
-            MOVE to_move = moves[i];
-            switch(to_move) {
-                case R:
-                    cube.turn_r();
-                    break;
-                case R_PRIME:
-                    cube.turn_r_prime();
-                    break;
-                case L:
-                    cube.turn_l();
-                    break;
-                case L_PRIME:
-                    cube.turn_l_prime();
-                    break;
-                case F:
-                    cube.turn_f();
-                    break;
-                case F_PRIME:
-                    cube.turn_f_prime();
-                    break;
-                case B:
-                    cube.turn_b();
-                    break;
-                case B_PRIME:
-                    cube.turn_b_prime();
-                    break;
-                case U:
-                    cube.turn_u();
-                    break;
-                case U_PRIME:
-                    cube.turn_u_prime();
-                    break;
-                case D:
-                    cube.turn_d();
-                    break;
-                case D_PRIME:
-                    cube.turn_d_prime();
-                    break;
-                case RESET:
-                    cube.reset();
-                    break;
-                case SOLVE:
-                    //cube.solve();
-                    break;
-                case EXIT:
-                    exit(0);
-            }
+            cube.execute_move(moves[i]);
         }
     }
     return 0;
