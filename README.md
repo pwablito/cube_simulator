@@ -4,5 +4,6 @@ Creator: Paul Spencer
 
 To build:
 
--`make`
--`./solve`
+1. `make`
+
+2. `./solve`
