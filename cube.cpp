@@ -71,15 +71,14 @@ void Cube::turn_r() {
     dbr.d = tmp_ubr_b;
 
     COLOR tmp_ufr_r = ufr.r;
-    ufr.r = dfr.r;
-    dfr.r = dbr.r;
-    dbr.r = ubr.r;
-    ubr.r = tmp_ufr_r;
-
     COLOR tmp_fr_r = fr.r;
+    ufr.r = dfr.r;
     fr.r = dr.r;
+    dfr.r = dbr.r;
     dr.r = br.r;
+    dbr.r = ubr.r;
     br.r = ur.r;
+    ubr.r = tmp_ufr_r;
     ur.r = tmp_fr_r;
 }
 
@@ -103,6 +102,17 @@ void Cube::turn_r_prime() {
     dbr.b = tmp_dfr_d;
     br.b = tmp_dr_d;
     ubr.b = tmp_dbr_d;
+
+    COLOR tmp_ufr_r = ufr.r;
+    COLOR tmp_ur_r = ur.r;
+    ufr.r = ubr.r;
+    ur.r = br.r;
+    ubr.r = dbr.r;
+    br.r = dr.r;
+    dbr.r = dfr.r;
+    dr.r = fr.r;
+    dfr.r = tmp_ufr_r;
+    fr.r = tmp_ur_r;
 }
 
 void Cube::turn_l() {
@@ -126,6 +136,17 @@ void Cube::turn_l() {
     dbl.b = tmp_dfl_d;
     bl.b = tmp_dl_d;
     ubl.b = tmp_dbl_d;
+
+    COLOR tmp_ufl_l = ufl.l;
+    COLOR tmp_ul_l = ul.l;
+    ufl.l = ubl.l;
+    ul.l = bl.l;
+    ubl.l = dbl.l;
+    bl.l = dl.l;
+    dbl.l = dfl.l;
+    dl.l = fl.l;
+    dfl.l = tmp_ufl_l;
+    fl.l = tmp_ul_l;
 }
 
 void Cube::turn_l_prime() {
@@ -148,13 +169,160 @@ void Cube::turn_l_prime() {
     dfl.d = tmp_dbl_b;
     dl.d = tmp_bl_b;
     dbl.d = tmp_ubl_b;
+
+    COLOR tmp_ufl_l = ufl.l;
+    COLOR tmp_fl_l = fl.l;
+    ufl.l = dfl.l;
+    fl.l = dl.l;
+    dfl.l = dbl.l;
+    dl.l = bl.l;
+    dbl.l = ubl.l;
+    bl.l = ul.l;
+    ubl.l = tmp_ufl_l;
+    ul.l = tmp_fl_l;
 }
 
 void Cube::turn_f() {
+    COLOR tmp_ufr_u = ufr.u;
+    COLOR tmp_uf_u = uf.u;
+    COLOR tmp_ufl_u = ufl.u;
 
+    ufr.u = ufl.l;
+    uf.u = fl.l;
+    ufl.u = dfl.l;
+
+    ufl.l = dfl.d;
+    fl.l = df.d;
+    dfl.l = dfr.d;
+
+    dfl.d = dfr.r;
+    df.d = fr.r;
+    dfr.d = ufr.r;
+
+    dfr.r = tmp_ufr_u;
+    fr.r = tmp_uf_u;
+    ufr.r = tmp_ufl_u;
+
+    COLOR tmp_ufl_f = ufl.f;
+    COLOR tmp_fl_f = fl.f;
+
+    ufl.f = dfl.f;
+    fl.f = df.f;
+    dfl.f = dfr.f;
+    df.f = fr.f;
+    dfr.f = ufr.f;
+    fr.f = uf.f;
+    ufr.f = tmp_ufl_f;
+    uf.f = tmp_fl_f;
 }
 
 void Cube::turn_f_prime() {
+    COLOR tmp_ufr_u = ufr.u;
+    COLOR tmp_uf_u = uf.u;
+    COLOR tmp_ufl_u = ufl.u;
+
+    ufr.u = dfr.r;
+    uf.u = fr.r;
+    ufl.u = ufr.r;
+
+    dfr.r = dfl.d;
+    fr.r = df.d;
+    ufr.r = dfr.d;
+
+    dfl.d = ufl.l;
+    df.d = fl.l;
+    dfr.d = dfl.l;
+
+    ufl.l = tmp_ufr_u;
+    fl.l = tmp_uf_u;
+    dfl.l = tmp_ufl_u;
+
+    COLOR tmp_ufl_f = ufl.f;
+    COLOR tmp_uf_f = uf.f;
+
+    ufl.f = ufr.f;
+    uf.f = fr.f;
+    ufr.f = dfr.f;
+    fr.f = df.f;
+    dfr.f = dfl.f;
+    df.f = fl.f;
+    dfl.f = tmp_ufl_f;
+    fl.f = tmp_uf_f;
+}
+
+void Cube::turn_b() {
+    COLOR tmp_ubr_u = ubr.u;
+    COLOR tmp_ub_u = ub.u;
+    COLOR tmp_ubl_u = ubl.u;
+
+    ubr.u = dbr.r;
+    ub.u = br.r;
+    ubl.u = ubr.r;
+
+    dbr.r = dbl.d;
+    br.r = db.d;
+    ubr.r = dbr.d;
+
+    dbl.d = ubl.l;
+    db.d = bl.l;
+    dbr.d = dbl.l;
+
+    ubl.l = tmp_ubr_u;
+    bl.l = tmp_ub_u;
+    dbl.l = tmp_ubl_u;
+
+    COLOR tmp_ubl_b = ubl.b;
+    COLOR tmp_ub_b = ub.b;
+
+    ubl.b = ubr.b;
+    ub.b = br.b;
+    ubr.b = dbr.b;
+    br.b = db.b;
+    dbr.b = dbl.b;
+    db.b = bl.b;
+    dbl.b = tmp_ubl_b;
+    bl.b = tmp_ub_b;
+}
+
+void Cube::turn_b_prime() {
+    COLOR tmp_ubr_u = ubr.u;
+    COLOR tmp_ub_u = ub.u;
+    COLOR tmp_ubl_u = ubl.u;
+
+    ubr.u = ubl.l;
+    ub.u = bl.l;
+    ubl.u = dbl.l;
+
+    ubl.l = dbl.d;
+    bl.l = db.d;
+    dbl.l = dbr.d;
+
+    dbl.d = dbr.r;
+    db.d = br.r;
+    dbr.d = ubr.r;
+
+    dbr.r = tmp_ubr_u;
+    br.r = tmp_ub_u;
+    ubr.r = tmp_ubl_u;
+
+    COLOR tmp_ubl_b = ubl.b;
+    COLOR tmp_bl_b = bl.b;
+
+    ubl.b = dbl.b;
+    bl.b = db.b;
+    dbl.b = dbr.b;
+    db.b = br.b;
+    dbr.b = ubr.b;
+    br.b = ub.b;
+    ubr.b = tmp_ubl_b;
+    ub.b = tmp_bl_b;
+}
+
+void Cube::turn_u() {
+
+}
+
+void Cube::turn_u_prime() {
 
 }
 
@@ -163,22 +331,6 @@ void Cube::turn_d() {
 }
 
 void Cube::turn_d_prime() {
-
-}
-
-void Cube::turn_b() {
-
-}
-
-void Cube::turn_b_prime() {
-
-}
-
-void Cube::turn_u() {
-
-}
-
-void Cube::turn_u_prime() {
 
 }
 
