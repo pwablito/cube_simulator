@@ -1,56 +1,56 @@
-typedef enum {
+enum COLOR{
     WHITE, YELLOW, RED, ORANGE, BLUE, GREEN
-} color;
+};
 
 class Cube {
 private:
     // Begin corners
     struct ufr {
-        color u;
-        color f;
-        color r;
+        COLOR u;
+        COLOR f;
+        COLOR r;
     };
 
     struct ubr {
-        color u;
-        color b;
-        color r;
+        COLOR u;
+        COLOR b;
+        COLOR r;
     };
 
     struct ufl {
-        color u;
-        color f;
-        color l;
+        COLOR u;
+        COLOR f;
+        COLOR l;
     };
 
     struct ubl {
-        color u;
-        color b;
-        color l;
+        COLOR u;
+        COLOR b;
+        COLOR l;
     };
 
     struct dfr {
-        color d;
-        color f;
-        color r;
+        COLOR d;
+        COLOR f;
+        COLOR r;
     };
 
     struct dbr {
-        color d;
-        color b;
-        color r;
+        COLOR d;
+        COLOR b;
+        COLOR r;
     };
 
     struct dfl {
-        color d;
-        color f;
-        color l;
+        COLOR d;
+        COLOR f;
+        COLOR l;
     };
 
     struct dbl {
-        color d;
-        color b;
-        color l;
+        COLOR d;
+        COLOR b;
+        COLOR l;
     };
 
     // End corners
@@ -58,63 +58,63 @@ private:
     // Start edges
 
     struct uf {
-        color u;
-        color f;
+        COLOR u;
+        COLOR f;
     };
 
     struct ub {
-        color u;
-        color b;
+        COLOR u;
+        COLOR b;
     };
 
     struct ur {
-        color u;
-        color r;
+        COLOR u;
+        COLOR r;
     };
 
     struct ul {
-        color u;
-        color l;
+        COLOR u;
+        COLOR l;
     };
 
     struct fr {
-        color f;
-        color r;
+        COLOR f;
+        COLOR r;
     };
 
     struct fl {
-        color f;
-        color l;
+        COLOR f;
+        COLOR l;
     };
 
     struct br {
-        color b;
-        color r;
+        COLOR b;
+        COLOR r;
     };
 
     struct bl {
-        color b;
-        color l;
+        COLOR b;
+        COLOR l;
     };
 
     struct df {
-        color d;
-        color f;
+        COLOR d;
+        COLOR f;
     };
 
     struct db {
-        color d;
-        color b;
+        COLOR d;
+        COLOR b;
     };
 
     struct dr {
-        color d;
-        color r;
+        COLOR d;
+        COLOR r;
     };
 
     struct dl {
-        color d;
-        color l;
+        COLOR d;
+        COLOR l;
     };
 
     // End edges
@@ -141,12 +141,12 @@ private:
     dr dr;
     dl dl;
 
-    color u;
-    color d;
-    color f;
-    color b;
-    color r;
-    color l;
+    COLOR u;
+    COLOR d;
+    COLOR f;
+    COLOR b;
+    COLOR r;
+    COLOR l;
 
 public:
     Cube() {

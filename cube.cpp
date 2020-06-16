@@ -3,7 +3,7 @@
 
 using namespace std;
 
-string color_char(color clr) {
+string color_char(COLOR clr) {
     string color_code = "";
     switch (clr) {
         case BLUE:
@@ -50,9 +50,9 @@ void Cube::print() {
 }
 
 void Cube::turn_r() {
-    color tmp_ubr_b = ubr.b;
-    color tmp_br_b = br.b;
-    color tmp_dbr_b = dbr.b;
+    COLOR tmp_ubr_b = ubr.b;
+    COLOR tmp_br_b = br.b;
+    COLOR tmp_dbr_b = dbr.b;
 
     dbr.b = ubr.u;
     br.b = ur.u;
@@ -70,13 +70,13 @@ void Cube::turn_r() {
     dr.d = tmp_br_b;
     dbr.d = tmp_ubr_b;
 
-    color tmp_ufr_r = ufr.r;
+    COLOR tmp_ufr_r = ufr.r;
     ufr.r = dfr.r;
     dfr.r = dbr.r;
     dbr.r = ubr.r;
     ubr.r = tmp_ufr_r;
 
-    color tmp_fr_r = fr.r;
+    COLOR tmp_fr_r = fr.r;
     fr.r = dr.r;
     dr.r = br.r;
     br.r = ur.r;
@@ -84,9 +84,9 @@ void Cube::turn_r() {
 }
 
 void Cube::turn_r_prime() {
-    color tmp_dfr_d = dfr.d;
-    color tmp_dr_d = dr.d;
-    color tmp_dbr_d = dbr.d;
+    COLOR tmp_dfr_d = dfr.d;
+    COLOR tmp_dr_d = dr.d;
+    COLOR tmp_dbr_d = dbr.d;
 
     dfr.d = ufr.f;
     dr.d = fr.f;
@@ -107,9 +107,9 @@ void Cube::turn_r_prime() {
 
 void Cube::turn_l() {
 
-    color tmp_dfl_d = dfl.d;
-    color tmp_dl_d = dl.d;
-    color tmp_dbl_d = dbl.d;
+    COLOR tmp_dfl_d = dfl.d;
+    COLOR tmp_dl_d = dl.d;
+    COLOR tmp_dbl_d = dbl.d;
 
     dfl.d = ufl.f;
     dl.d = fl.f;
@@ -129,9 +129,9 @@ void Cube::turn_l() {
 }
 
 void Cube::turn_l_prime() {
-    color tmp_ubl_b = ubl.b;
-    color tmp_bl_b = bl.b;
-    color tmp_dbl_b = dbl.b;
+    COLOR tmp_ubl_b = ubl.b;
+    COLOR tmp_bl_b = bl.b;
+    COLOR tmp_dbl_b = dbl.b;
 
     dbl.b = ubl.u;
     bl.b = ul.u;
@@ -167,6 +167,14 @@ void Cube::turn_d_prime() {
 }
 
 void Cube::turn_b() {
+
+}
+
+void Cube::turn_b_prime() {
+
+}
+
+void Cube::turn_u() {
 
 }
 
