@@ -681,3 +681,7 @@ string Cube::move_to_string(MOVE move){
     }
     return "unknown";
 }
+
+bool Cube::is_solved() {
+    return false;
+}

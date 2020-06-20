@@ -175,6 +175,7 @@ private:
     void turn_u_prime();
     void reset();
     string move_to_string(MOVE move);
+    bool is_solved();
 public:
     Cube() {
         this->u = WHITE;
