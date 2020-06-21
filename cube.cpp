@@ -683,5 +683,10 @@ string Cube::move_to_string(MOVE move){
 }
 
 bool Cube::is_solved() {
-    return false;
+    return (ufr.u == uf.u == ufl.u == ur.u == u == ul.u == ubr.u == ub.u == ubl.u) &&
+           (dfr.d == df.d == dfl.d == dr.d == d == dl.d == dbr.d == db.d == dbl.d) &&
+           (ufr.f == uf.f == ufl.f == fr.f == f == fl.f == dfr.f == df.f == dfl.f) &&
+           (ubr.b == ub.b == ubl.b == br.b == b == bl.b == dbr.b == db.b == dbl.b) &&
+           (ufr.r == ur.r == ubr.r == fr.r == r == br.r == dfr.r == dr.r == dbr.r) &&
+           (ufl.l == ul.l == ubl.l == fl.l == l == bl.l == dfl.l == dl.l == dbl.l);
 }
