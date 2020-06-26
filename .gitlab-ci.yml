@@ -1,0 +1,9 @@
+image: "python:3.8"
+
+stages:
+    - build
+    
+build-check:
+    stage: build
+    script:
+        - make
