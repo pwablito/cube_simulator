@@ -6,7 +6,7 @@
 using namespace std;
 
 vector<MOVE> get_moves() {
-    cout << "(cube) > ";
+    cout << ">>> ";
     string input;
     getline(cin, input);
     vector<MOVE> moves = vector<MOVE>();

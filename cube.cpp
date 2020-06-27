@@ -683,10 +683,16 @@ string Cube::move_to_string(MOVE move){
 }
 
 bool Cube::is_solved() {
-    return (ufr.u == uf.u == ufl.u == ur.u == u == ul.u == ubr.u == ub.u == ubl.u) &&
-           (dfr.d == df.d == dfl.d == dr.d == d == dl.d == dbr.d == db.d == dbl.d) &&
-           (ufr.f == uf.f == ufl.f == fr.f == f == fl.f == dfr.f == df.f == dfl.f) &&
-           (ubr.b == ub.b == ubl.b == br.b == b == bl.b == dbr.b == db.b == dbl.b) &&
-           (ufr.r == ur.r == ubr.r == fr.r == r == br.r == dfr.r == dr.r == dbr.r) &&
-           (ufl.l == ul.l == ubl.l == fl.l == l == bl.l == dfl.l == dl.l == dbl.l);
+    return ufr.u == u && uf.u == u && ufl.u == u && ur.u == u && ul.u == u && ubr.u == u && ub.u == u && ubl.u == u &&
+           dfr.d == d && df.d == d && dfl.d == d && dr.d == d && dl.d == d && dbr.d == d && db.d == d && dbl.d == d &&
+           ufr.f == f && ufl.f == f && dfr.f == f && dfl.f == f && uf.f == f && fr.f == f && df.f == f && fl.f == f &&
+           ubr.b == b && ubl.b == b && dbr.b == b && dbl.b == b && ub.b == b && br.b == b && db.b == b && bl.b == b &&
+           ufr.r == r && dfr.r == r && ubr.r == r && dbr.r == r && fr.r == r && br.r == r && ur.r == r && dr.r == r &&
+           ufl.l == l && dfl.l == l && ubl.l == l && dbl.l == l && fl.l == l && bl.l == l && ul.l == l && dl.l == l;
+}
+
+void Cube::altsolve() {
+    while (!is_solved()) {
+        
+    }
 }
