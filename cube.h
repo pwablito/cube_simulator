@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum COLOR{
+enum COLOR {
     WHITE, YELLOW, RED, ORANGE, BLUE, GREEN
 };
 
