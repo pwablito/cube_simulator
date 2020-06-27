@@ -541,6 +541,9 @@ void Cube::reset() {
 }
 
 vector<MOVE> Cube::solve() {
+    if (true) {
+        return altsolve();
+    }
     vector<MOVE> moves = vector<MOVE>();
     while (!move_stack.empty()) {
         MOVE current = move_stack.top();
@@ -691,8 +694,13 @@ bool Cube::is_solved() {
            ufl.l == l && dfl.l == l && ubl.l == l && dbl.l == l && fl.l == l && bl.l == l && ul.l == l && dl.l == l;
 }
 
-void Cube::altsolve() {
+vector<MOVE> Cube::altsolve() {
+    vector<MOVE> moves = vector<MOVE>();
     while (!is_solved()) {
-        
+        MOVE move = static_cast<MOVE>(rand() % D_PRIME);
+        execute_move(move);
+        moves.push_back(move);
+        this->print();
     }
+    return moves;
 }

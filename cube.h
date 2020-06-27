@@ -190,5 +190,5 @@ public:
     vector<MOVE> solve();
     MOVE invert_move(MOVE move);
     void execute_move(MOVE move);
-    void altsolve();
+    vector<MOVE> altsolve();
 };
