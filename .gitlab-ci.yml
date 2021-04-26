@@ -1,5 +1,3 @@
-image: "rikorose/gcc-cmake:9.3"
-
 stages:
     - build
     
