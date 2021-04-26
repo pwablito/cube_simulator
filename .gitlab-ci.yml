@@ -1,4 +1,4 @@
-image: "gcc:9.3"
+image: "rikorose/gcc-cmake:9.3"
 
 stages:
     - build
