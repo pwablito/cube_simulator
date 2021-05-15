@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_FLAGS -no-pie)
 
 add_executable(
-        cubesolver
+        cubesimulator
         main.cpp
         cube.cpp
 )

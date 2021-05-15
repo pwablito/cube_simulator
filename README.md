@@ -12,6 +12,6 @@ To use, clone the repository and run the following commands inside it.
 
 3. `make`
 
-4. `./cubesolver`
+4. `./cubesimulator`
 
 Now you can input an algorithm (`r` is clockwise right face move, `R` is counterclockwise) or use the `solve`, `reset`, or `exit` commands.
